@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.0",
+    "@prisma/extension-accelerate": "^1.2.1",
+    "hono": "^4.6.20",
+    "jsonwebtoken": "^9.0.2",
+    "medium_common_akshar": "^1.0.0",
+    "medium_common_akshar25": "^1.0.0",
+    "medium_common_akshar2510": "^1.0.0",
+    "prisma": "^6.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "wrangler": "^3.107.2"
+  }
+}
