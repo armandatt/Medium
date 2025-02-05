@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {useBlogPost } from "@/hooks/index"
 
 export default function BlogPost() {
@@ -32,7 +32,6 @@ export default function BlogPost() {
             <div className="flex items-start space-x-4">
               <Avatar className="h-10 w-10">
                 <AvatarImage src="" alt={post.author?.name} />
-                {/* <AvatarFallback>{post.author?.name[0]?.charAt(0)}</AvatarFallback> */}
               </Avatar>
               <div className="space-y-1">
                 <h3 className="font-medium">{post.author?.name || "Anonyms"}</h3>
