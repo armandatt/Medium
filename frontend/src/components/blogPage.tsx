@@ -33,7 +33,7 @@ export default function BlogList() {
 
       <div className="space-y-8">
         {blogs.map((blog) => (
-          <Link to={`/blog/post/${blog.id}`} key={blog.id}>
+          <Link to={`/blog/fullBlog/${blog.id}`} key={blog.id}>
             <article className="flex gap-6 py-2 hover:bg-accent/50 rounded-lg transition-colors">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
