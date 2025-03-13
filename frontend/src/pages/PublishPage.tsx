@@ -2,6 +2,7 @@ import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import { X, ImagePlus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/ui/icons"
 
 interface Topic {
   id: string
@@ -182,7 +183,9 @@ export default function PublishPage({ onClose, onPublish, onDomainSelect, title,
                 onSubmit();
               }}
               disabled={isLoading}
+              
             >
+              {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
               Publish now
             </Button>
             <Button variant="ghost">Schedule for later</Button>
