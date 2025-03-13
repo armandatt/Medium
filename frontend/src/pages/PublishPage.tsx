@@ -30,6 +30,7 @@ export default function PublishPage({ onClose, onPublish, onDomainSelect, title,
   const [open, setOpen] = useState(false)
   const [image, setImage] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = "hidden"
@@ -58,6 +59,15 @@ export default function PublishPage({ onClose, onPublish, onDomainSelect, title,
       }
       reader.readAsDataURL(file)
     }
+  }
+
+  async function onSubmit(event?: React.FormEvent<HTMLFormElement>) {
+    event?.preventDefault()
+    setIsLoading(true)
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
   }
 
   return (
@@ -132,16 +142,15 @@ export default function PublishPage({ onClose, onPublish, onDomainSelect, title,
                       placeholder="Search topics..."
                       className="w-full p-3 border-b sticky top-0 bg-white"
                     //   onChange={(e) => {
-                        // Implement search logic here
+                    // Implement search logic here
                     //   }}
                     />
                     <div>
                       {topics.map((topic) => (
                         <button
                           key={topic.id}
-                          className={`w-full px-3 py-2 text-left hover:bg-gray-50 ${
-                            selectedTopics.some((t) => t.id === topic.id) ? "opacity-50" : ""
-                          }`}
+                          className={`w-full px-3 py-2 text-left hover:bg-gray-50 ${selectedTopics.some((t) => t.id === topic.id) ? "opacity-50" : ""
+                            }`}
                           onClick={() => {
                             handleSelectTopic(topic)
                             setOpen(false)
@@ -163,8 +172,17 @@ export default function PublishPage({ onClose, onPublish, onDomainSelect, title,
             like Medium's homepage and in subscribers' inboxes — not the contents of the story itself.
           </p>
 
+
           <div className="flex items-center gap-4">
-            <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={onPublish}>
+            <Button
+              className={`bg-green-600 hover:bg-green-700 text-white ${isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+                }`}
+              onClick={() => {
+                onPublish();
+                onSubmit();
+              }}
+              disabled={isLoading}
+            >
               Publish now
             </Button>
             <Button variant="ghost">Schedule for later</Button>
